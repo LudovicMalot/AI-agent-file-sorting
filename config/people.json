@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "People Configuration",
+  "description": "Schema for people.local.json containing owner labels and pattern triggers.",
+  "type": "object",
+  "properties": {
+    "people": {
+      "type": "array",
+      "description": "List of known people and the patterns that identify them.",
+      "items": {
+        "type": "object",
+        "required": ["label", "patterns"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Canonical owner label stored in the vault."
+          },
+          "patterns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Case-insensitive substrings extracted from file names or OCR to match this person."
+          }
+        },
+        "additionalProperties": false
+      },
+      "default": []
+    },
+    "fallback": {
+      "type": "string",
+      "description": "Optional label to apply when no person is detected.",
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "people": [
+        { "label": "Alice", "patterns": ["Alice", "A. Example"] },
+        { "label": "Bob", "patterns": ["Bob", "Robert"] }
+      ],
+      "fallback": ""
+    }
+  ]
+}

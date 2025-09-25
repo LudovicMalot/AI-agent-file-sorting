@@ -1,0 +1,5 @@
+pdfminer.six
+Pillow
+pytesseract
+requests
+Unidecode

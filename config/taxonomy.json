@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Taxonomy Configuration",
+	"description": "Schema for taxonomy.local.json describing the allowed destinations within the vault.",
+	"type": "object",
+	"propertyNames": {
+		"type": "string",
+		"minLength": 1,
+		"description": "Top-level category name"
+	},
+	"additionalProperties": {
+		"type": "array",
+		"description": "Ordered list of allowed subdirectories under this category.",
+		"items": {
+			"type": "string",
+			"minLength": 1
+		},
+		"default": []
+	},
+	"examples": [
+		{
+			"Documents": ["Identity", "Legal", "Finance", "Housing", "Health", "Education", "Employment", "Travel", "Family"],
+			"Projects": [],
+			"Media": ["Movies", "Series", "Music", "Images"]
+		}
+	]
+}
